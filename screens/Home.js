@@ -12,66 +12,36 @@ import {
 } from "react-native";
 
 export default class HomeScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
 
+        };
+    }
 
     render() {
         return (
             <View style={styles.container}>
                 <SafeAreaView style={styles.droidSafeArea} />
-                {/* <Background 
-                        source={require('../assets/stars.gif')} 
-                        style={styles.backgroundImage}> 
-                */}
-                {/* <Image 
-                        source={require('../assets/stars.gif')} 
-                        style={styles.backgroundImage}> 
-                */}
-                 <ImageBackground 
-                        source={require('../assets/stars.gif')} 
-                        style={styles.backgroundImage}> 
-                
-                {/* <BackgroundImage
-                        source={require('../assets/stars.gif')} 
-                        style={styles.backgroundImage}> 
-                */}
+                <ImageBackground source={require('../assets/bg.png')} style={styles.backgroundImage}>
                     <View style={styles.titleBar}>
-                        <Image source={require("../assets/main-icon.png")} style={{ width: 150, height: 150 }}></Image>
-                        <Text style={styles.titleText}>Stellar</Text>
-                        <Text style={styles.titleText}>App</Text>
+                        <Text style={styles.titleText}>ISS Tracker App</Text>
                     </View>
-
-                    {/* <TouchableOpacity 
-                          style={styles.routeCard} onPress={() =>
-                        this.props.navigation("SpaceCraft")
-                    }> */}
-                    {/* <TouchableOpacity 
-                          style={styles.routeCard} onPress={() =>
-                        navigation.navigate("SpaceCraft")
-                    }> */}
-                    {/* <TouchableOpacity 
-                          style={styles.routeCard} onPress={() =>
-                        this.props("SpaceCraft")
-                    }> */}
-                    <TouchableOpacity 
-                          style={styles.routeCard} onPress={() =>
-                        this.props.navigation.navigate("SpaceCraft")
-                    }>                     
-                        <Text style={styles.routeText}>Spacecrafts</Text>
-                        <Image source={require("../assets/space_crafts.png")} style={styles.routeImage}></Image>
-                    </TouchableOpacity>
-
                     <TouchableOpacity style={styles.routeCard} onPress={() =>
-                        this.props.navigation.navigate("StarMap")
+                        this.props.navigation.navigate("IssLocation")
                     }>
-                        <Text style={styles.routeText}>Star Map</Text>
-                        <Image source={require("../assets/star_map.png")} style={styles.routeImage}></Image>
+                        <Text style={styles.routeText}>ISS Location</Text>
+                        <Text style={styles.knowMore}>{"Know More --->"}</Text>
+                        <Text style={styles.bgDigit}>1</Text>
+                        <Image source={require("../assets/iss_icon.png")} style={styles.iconImage}></Image>
                     </TouchableOpacity>
-
                     <TouchableOpacity style={styles.routeCard} onPress={() =>
-                        this.props.navigation.navigate("DailyPic")
+                        this.props.navigation.navigate("Meteors")
                     }>
-                        <Text style={styles.routeText}>Daily Pictures</Text>
-                        <Image source={require("../assets/daily_pictures.png")} style={styles.routeImage}></Image>
+                        <Text style={styles.routeText}>Meteors</Text>
+                        <Text style={styles.knowMore}>{"Know More --->"}</Text>
+                        <Text style={styles.bgDigit}>2</Text>
+                        <Image source={require("../assets/meteor_icon.png")} style={styles.iconImage}></Image>
                     </TouchableOpacity>
                 </ImageBackground>
             </View>
@@ -91,17 +61,15 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     routeCard: {
-        flex: 0.12,
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 10,
-        marginLeft: 30,
-        marginRight: 30,
-        borderRadius: 100,
-        backgroundColor: "white"
+        flex: 0.25,
+        marginLeft: 50,
+        marginRight: 50,
+        marginTop: 50,
+        borderRadius: 30,
+        backgroundColor: 'white'
     },
     titleBar: {
-        flex: 0.5,
+        flex: 0.15,
         justifyContent: "center",
         alignItems: "center"
     },
@@ -111,18 +79,31 @@ const styles = StyleSheet.create({
         color: "white"
     },
     routeText: {
-        fontSize: 25,
+        fontSize: 35,
         fontWeight: "bold",
-        color: '#D11583',
-        justifyContent: "center",
-        alignItems: "center"
+        color: "black",
+        marginTop: 75,
+        paddingLeft: 30
     },
-    routeImage: {
+    knowMore: {
+        paddingLeft: 30,
+        color: "red",
+        fontSize: 15
+    },
+    bgDigit: {
         position: "absolute",
-        top: -20,
-        right: -15,
-        height: 80,
-        width: 80,
-        resizeMode: "contain"
+        color: "rgba(183, 183, 183, 0.5)",
+        fontSize: 150,
+        right: 20,
+        bottom: -15,
+        zIndex: -1
+    },
+    iconImage: {
+        position: "absolute",
+        height: 200,
+        width: 200,
+        resizeMode: "contain",
+        right: 20,
+        top: -80
     }
 });
